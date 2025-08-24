@@ -1,6 +1,4 @@
-# BrackeysJam2025: [Nome do Jogo]
-
-![Banner do Jogo (opcional)](/caminho/para/imagem/do/jogo.png)
+# BrackeysJam2025
 
 ## 🎲 Sobre o Jogo
 
@@ -12,7 +10,7 @@ Bem-vindo ao repositório do nosso projeto para a **BrackeysJam 2025**! O tema d
 
 Você pode jogar a versão final do nosso jogo e nos apoiar na página da Jam!
 
-👉 [**Link do itch.io ou da página da Jam**](https://itch.io/jam/brackeys-14/entries)
+👉 [**Página do Itch.io**](https://itch.io/jam/brackeys-14/entries)
 
 ---
 
