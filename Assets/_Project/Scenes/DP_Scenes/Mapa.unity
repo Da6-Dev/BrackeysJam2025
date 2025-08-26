@@ -393,7 +393,7 @@ MonoBehaviour:
   irregularityScale: 80
   irregularityStrength: 8
   seaLevel: 0.4
-  waterColor: {r: 0, g: 0, b: 0, a: 0}
+  waterColor: {r: 0, g: 0.06282711, b: 1, a: 1}
   octaves: 4
   persistence: 0.53
   lacunarity: 2
