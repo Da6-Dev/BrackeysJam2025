@@ -46,10 +46,15 @@ public class WorldGenerator : MonoBehaviour
         if (world == null) { world = new List<Country>(); }
         world.Clear();
 
+        const float goldenRatioConjugate = 0.61803398875f;
+        float currentHue = UnityEngine.Random.value;
+
         int numberOfCountries = UnityEngine.Random.Range(minCountriesInWorld, maxCountriesInWorld + 1);
         for (int i = 0; i < numberOfCountries; i++)
         {
-            Country newCountry = GenerateCountry();
+            currentHue = (currentHue + goldenRatioConjugate) % 1.0f;
+
+            Country newCountry = GenerateCountry(currentHue);
             newCountry.countryID = i;
             world.Add(newCountry);
         }
@@ -58,14 +63,23 @@ public class WorldGenerator : MonoBehaviour
         Debug.Log($"World generated with {world.Count} nations, using Seed: {worldSeed}");
     }
 
-    private Country GenerateCountry()
+    private Country GenerateCountry(float hue)
     {
         Country newCountry = new Country();
 
         newCountry.governmentType = GetRandomGovernmentType();
         newCountry.countryName = GenerateCountryName(newCountry.governmentType);
         newCountry.politicalStability = UnityEngine.Random.Range(0.2f, 0.9f);
-        newCountry.mapColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.7f, 0.9f, 0.8f, 1f);
+
+        const float minBlueHue = 0.55f;
+        const float maxBlueHue = 0.75f;
+
+        if (hue >= minBlueHue && hue <= maxBlueHue)
+        {
+            hue = (hue + 0.3f) % 1.0f;
+        }
+
+        newCountry.mapColor = Color.HSVToRGB(hue, UnityEngine.Random.Range(0.75f, 0.95f), UnityEngine.Random.Range(0.85f, 1.0f));
 
         GenerateEconomicAttributes(newCountry);
         GenerateSocialAttributes(newCountry);
