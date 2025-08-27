@@ -31,7 +31,7 @@ Se você quer ver como o jogo foi feito ou contribuir:
     git clone [https://github.com/](https://github.com/)[SeuUsuário]/BrackeysJam2025.git
     ```
 2.  **Abra o Projeto:**
-    Abra a pasta clonada na **[Unity 6.2]** (versão **[6000.2.1f1]**).
+    Abra a pasta clonada na **[Unity 6.2]** (versão **[6000.0.56f1]**).
 3.  **Execute a Cena Principal:**
     Abra a cena principal do jogo e clique em "Play".
 
