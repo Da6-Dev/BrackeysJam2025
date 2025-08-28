@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8efcc1cb5b7c2645b38d43c225eda96, type: 3}
+  m_Name: Trade Dispute
+  m_EditorClassIdentifier: 
+  isInterCountryEvent: 1
+  Stat: 5
+  Threshold: 2
+  requiredRelation: 4
+  targetStat: 0
+  targetThreshold: 1
+  GenericEventName: Trade Dispute
+  CauseDescriptionFragment: Citing unfair trade practices, {ACTOR} has imposed heavy
+    tariffs on imports from {TARGET}, initiating a bitter economic dispute.
+  ActorEffectModifiers:
+  - Id: 
+    TargetStat: 0
+    Value: -0.005
+    SemestersRemaining: 8
+  TargetEffectModifiers:
+  - Id: 
+    TargetStat: 0
+    Value: -0.015
+    SemestersRemaining: 8

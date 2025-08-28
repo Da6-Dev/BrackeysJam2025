@@ -335,6 +335,139 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &532304383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532304384}
+  - component: {fileID: 532304387}
+  - component: {fileID: 532304386}
+  - component: {fileID: 532304385}
+  m_Layer: 5
+  m_Name: TimePassButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &532304384
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532304383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 952074187}
+  m_Father: {fileID: 1970055689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 121, y: -184}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &532304385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532304383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 532304386}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 909512415}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: AdvanceSemester
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &532304386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532304383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &532304387
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532304383}
+  m_CullTransparentMesh: 1
 --- !u!1 &909512409
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +480,9 @@ GameObject:
   - component: {fileID: 909512413}
   - component: {fileID: 909512412}
   - component: {fileID: 909512414}
+  - component: {fileID: 909512415}
+  - component: {fileID: 909512416}
+  - component: {fileID: 909512417}
   m_Layer: 0
   m_Name: WorldGenerator
   m_TagString: Untagged
@@ -469,15 +605,19 @@ MonoBehaviour:
     unemploymentRate: 0
     educationLevel: 0.3994401
     populationMorale: 0.44280043
+    educationSpendingRate: 0.15
+    healthcareSpendingRate: 0.2
+    infrastructureSpendingRate: 0.1
+    militarySpendingRate: 0.08
     environmentalHealth: 0
     militaryStrength: 0
     internationalReputation: 0
     currentPolicy: 4
     countryID: 0
     economicBlocName: 
-    activeEvents: []
     mapColor: {r: 0.14085248, g: 0.8338885, b: 0.9327348, a: 1}
     capitalPosition: {x: 0, y: 0}
+    activeModifiers: []
   - countryName: Principality of Tylea
     governmentType: 3
     politicalStability: 0.6055652
@@ -528,15 +668,19 @@ MonoBehaviour:
     unemploymentRate: 0
     educationLevel: 0.71376044
     populationMorale: 0.5985074
+    educationSpendingRate: 0.15
+    healthcareSpendingRate: 0.2
+    infrastructureSpendingRate: 0.1
+    militarySpendingRate: 0.08
     environmentalHealth: 0
     militaryStrength: 0
     internationalReputation: 0
     currentPolicy: 4
     countryID: 1
     economicBlocName: Meridian Alliance
-    activeEvents: []
     mapColor: {r: 0.26755518, g: 0.94553185, b: 0.6258184, a: 1}
     capitalPosition: {x: 0, y: 0}
+    activeModifiers: []
   - countryName: Directive of Wycea
     governmentType: 2
     politicalStability: 0.32805365
@@ -587,15 +731,19 @@ MonoBehaviour:
     unemploymentRate: 0
     educationLevel: 0.73450565
     populationMorale: 0.35117307
+    educationSpendingRate: 0.15
+    healthcareSpendingRate: 0.2
+    infrastructureSpendingRate: 0.1
+    militarySpendingRate: 0.08
     environmentalHealth: 0
     militaryStrength: 0
     internationalReputation: 0
     currentPolicy: 4
     countryID: 2
     economicBlocName: Northern Trade Union
-    activeEvents: []
     mapColor: {r: 0.93092746, g: 0.16490015, b: 0.6936059, a: 1}
     capitalPosition: {x: 0, y: 0}
+    activeModifiers: []
   - countryName: Union of Fenia
     governmentType: 4
     politicalStability: 0.4718599
@@ -646,15 +794,19 @@ MonoBehaviour:
     unemploymentRate: 0
     educationLevel: 0.8595575
     populationMorale: 0.76921535
+    educationSpendingRate: 0.15
+    healthcareSpendingRate: 0.2
+    infrastructureSpendingRate: 0.1
+    militarySpendingRate: 0.08
     environmentalHealth: 0
     militaryStrength: 0
     internationalReputation: 0
     currentPolicy: 3
     countryID: 3
     economicBlocName: Northern Trade Union
-    activeEvents: []
     mapColor: {r: 0.59373385, g: 0.13625051, b: 0.86419845, a: 1}
     capitalPosition: {x: 0, y: 0}
+    activeModifiers: []
   - countryName: Directive of Pendoros
     governmentType: 2
     politicalStability: 0.7028215
@@ -705,15 +857,19 @@ MonoBehaviour:
     unemploymentRate: 0
     educationLevel: 0.6586027
     populationMorale: 0.5259203
+    educationSpendingRate: 0.15
+    healthcareSpendingRate: 0.2
+    infrastructureSpendingRate: 0.1
+    militarySpendingRate: 0.08
     environmentalHealth: 0
     militaryStrength: 0
     internationalReputation: 0
     currentPolicy: 0
     countryID: 4
     economicBlocName: Northern Trade Union
-    activeEvents: []
     mapColor: {r: 0.81920093, g: 0.76872516, b: 0.21326666, a: 1}
     capitalPosition: {x: 0, y: 0}
+    activeModifiers: []
   testCountry:
     countryName: 
     governmentType: 0
@@ -735,15 +891,19 @@ MonoBehaviour:
     unemploymentRate: 0
     educationLevel: 0
     populationMorale: 0
+    educationSpendingRate: 0.15
+    healthcareSpendingRate: 0.2
+    infrastructureSpendingRate: 0.1
+    militarySpendingRate: 0.08
     environmentalHealth: 0
     militaryStrength: 0
     internationalReputation: 0
     currentPolicy: 0
     countryID: 0
     economicBlocName: 
-    activeEvents: []
     mapColor: {r: 0, g: 0, b: 0, a: 0}
     capitalPosition: {x: 0, y: 0}
+    activeModifiers: []
 --- !u!114 &909512414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,6 +918,227 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   worldGenerator: {fileID: 909512413}
   mapGenerator: {fileID: 909512412}
+--- !u!114 &909512415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909512409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb714105801e2914698e38b0f9239363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &909512416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909512409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85ddc21c6e436a4184727ea2a0063f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldGenerator: {fileID: 909512413}
+  eventComponents:
+  - {fileID: 11400000, guid: 38a3594c2215cb04ea021ca7e8a3982f, type: 2}
+  - {fileID: 11400000, guid: 469448f449e880240a573e789d183e71, type: 2}
+  - {fileID: 11400000, guid: 94c4d051a228bbd4992fe42d54654732, type: 2}
+  - {fileID: 11400000, guid: 79f7728fbf9177a458a80b6bc7c58717, type: 2}
+  - {fileID: 11400000, guid: 1ace6fe77a2463946a4f07ade1743858, type: 2}
+  - {fileID: 11400000, guid: 01e1bac4d2b31b341b905826fcd800cb, type: 2}
+  - {fileID: 11400000, guid: 1d97211766253f446918d0fbd80a0af7, type: 2}
+  - {fileID: 11400000, guid: 768ceba24185ecd4b9568baf3fe66cce, type: 2}
+  - {fileID: 11400000, guid: 131b0a7b6c5dc5a469ec61cb368a2441, type: 2}
+  - {fileID: 11400000, guid: b77e022132454f04b9c8f052496d744e, type: 2}
+  - {fileID: 11400000, guid: 4ade71fdbc8a8a6419498ea717d7ed26, type: 2}
+  - {fileID: 11400000, guid: 473bc716d0e1dcd43b0f70ead60d5035, type: 2}
+  - {fileID: 11400000, guid: 2c9bb06502b9bda419c22d948216dac7, type: 2}
+  - {fileID: 11400000, guid: 29d46de8976bd3d4fbec1fb0aeeda9e1, type: 2}
+  - {fileID: 11400000, guid: f2c26c27c6484c44cba878f05c7c732a, type: 2}
+  - {fileID: 11400000, guid: 9eaa346ac37932047985f41bc0c78b3a, type: 2}
+  chanceOfInternalEvent: 0.15
+  chanceOfInterCountryEvent: 0.1
+--- !u!114 &909512417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909512409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94815a427a0f4d040951d167d799ec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldGenerator: {fileID: 909512413}
+  worldCycleSpeed: 0.1
+  worldCycleMagnitude: 0.2
+  stateLerp: 0.14
+  stabilitySensitivity: 1
+  maxDebtInterestPenalty: 0.15
+  inflationFromDeficit: 0.05
+  baseInvestmentReturn: 0.015
+  baseGdpPerCapitaPotential: 25000
+  techMultiplier: 1.6
+  educationMultiplier: 1.2
+  softCapAggression: 0.6
+  softCapOverdriveThreshold: 0.05
+  overdriveDecayRate: 0.005
+  MIN_GDP: 1000000
+  MAX_GDP_HARD: 100000000000000
+  MIN_POP: 1000
+  MAX_POP: 1500000000
+  MAX_INFLATION: 0.35
+  MIN_INFLATION: -0.03
+  MAX_UNEMPLOYMENT: 0.35
+  NATURAL_UNEMPLOYMENT: 0.05
+  MAX_DEBT_MULTIPLIER: 20
+  shockProbability: 0.02
+  maxShockImpact: 0.08
+  debtToGdpWarning: 3
+  fiscalAdjustmentSpeed: 0.01
+  enableLogging: 0
+  logEveryNSteps: 4
+--- !u!1 &952074186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952074187}
+  - component: {fileID: 952074189}
+  - component: {fileID: 952074188}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &952074187
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952074186}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 532304384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &952074188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952074186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Passar Tempo
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 16
+  m_fontSizeBase: 16
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &952074189
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952074186}
+  m_CullTransparentMesh: 1
 --- !u!1 &974146395
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,8 +1356,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1337,6 +1718,7 @@ RectTransform:
   - {fileID: 1981332490}
   - {fileID: 1556698976}
   - {fileID: 974146396}
+  - {fileID: 532304384}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
