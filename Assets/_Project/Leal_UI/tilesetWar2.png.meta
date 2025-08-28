@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: 648e8c1319b2eca4cbb9e3a4661e257e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2748248645060468950
+    second: tilesetWar2_0
+  - first:
+      213: -3535856788359681180
+    second: tilesetWar2_1
+  - first:
+      213: 2403543904170965094
+    second: tilesetWar2_2
+  - first:
+      213: -5655642023719051508
+    second: tilesetWar2_3
+  - first:
+      213: 2782761166091390697
+    second: tilesetWar2_4
+  - first:
+      213: 6426001604328944161
+    second: tilesetWar2_5
+  - first:
+      213: -6792997855918169018
+    second: tilesetWar2_6
+  - first:
+      213: 4288425540541262076
+    second: tilesetWar2_7
+  - first:
+      213: -1162857541234224694
+    second: tilesetWar2_8
+  - first:
+      213: 7449811943136093946
+    second: tilesetWar2_9
+  - first:
+      213: -2795973054022926480
+    second: tilesetWar2_10
+  - first:
+      213: 5752940120339713353
+    second: tilesetWar2_11
+  - first:
+      213: 8042675651309191376
+    second: tilesetWar2_12
+  - first:
+      213: 4699292858345361984
+    second: tilesetWar2_13
+  - first:
+      213: 788107695890545181
+    second: tilesetWar2_14
+  - first:
+      213: -3595314033693067507
+    second: tilesetWar2_15
+  - first:
+      213: -8098243852761468645
+    second: tilesetWar2_16
+  - first:
+      213: 7354120335359464664
+    second: tilesetWar2_17
+  - first:
+      213: 5937396466774197962
+    second: tilesetWar2_18
+  - first:
+      213: -5611668236015883426
+    second: tilesetWar2_19
+  - first:
+      213: 2125946405868063712
+    second: tilesetWar2_20
+  - first:
+      213: -8227458320000218799
+    second: tilesetWar2_21
+  - first:
+      213: -1387459985211912947
+    second: tilesetWar2_22
+  - first:
+      213: -7815030986848564658
+    second: tilesetWar2_23
+  - first:
+      213: -2137804433200280839
+    second: tilesetWar2_24
+  - first:
+      213: -7272046675638750752
+    second: tilesetWar2_25
+  - first:
+      213: -908359377005075448
+    second: tilesetWar2_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tilesetWar2_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 332
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d02743f49db32620800000000000000
+      internalID: 2748248645060468950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 223
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46bea291cfc1eeec0800000000000000
+      internalID: -3535856788359681180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_2
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 255
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6687a22427a1b5120800000000000000
+      internalID: 2403543904170965094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_3
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 287
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f54775b8f1381b0800000000000000
+      internalID: -5655642023719051508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_4
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 289
+        width: 68
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ee01af698a5e9620800000000000000
+      internalID: 2782761166091390697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 268
+        width: 61
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 122fd18a96ebd2950800000000000000
+      internalID: 6426001604328944161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 233
+        width: 29
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 644e10ed07c6ab1a0800000000000000
+      internalID: -6792997855918169018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_7
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 223
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf8acadde4c838b30800000000000000
+      internalID: 4288425540541262076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_8
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 224
+        width: 68
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac199523a33bcdfe0800000000000000
+      internalID: -1162857541234224694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 168
+        width: 48
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6e612dd7c036760800000000000000
+      internalID: 7449811943136093946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 95
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07f36613255b239d0800000000000000
+      internalID: -2795973054022926480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_11
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 159
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d01fe1f8c86df40800000000000000
+      internalID: 5752940120339713353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_12
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 160
+        width: 68
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d0c7f794e25d9f60800000000000000
+      internalID: 8042675651309191376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_13
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 127
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042943de4fd373140800000000000000
+      internalID: 4699292858345361984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_14
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 110
+        width: 37
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1abe4a16cbefea00800000000000000
+      internalID: 788107695890545181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_15
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 96
+        width: 68
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d077fb56fe0ea1ec0800000000000000
+      internalID: -3595314033693067507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_16
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 98
+        width: 48
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1179ab4f124d9f80800000000000000
+      internalID: -8098243852761468645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_17
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 70
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d4d3903b751f0660800000000000000
+      internalID: 7354120335359464664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_18
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 66
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac64cbcf0aed56250800000000000000
+      internalID: 5937396466774197962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 45
+        width: 69
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b2ee2a8795f12b0800000000000000
+      internalID: -5611668236015883426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_20
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 34
+        width: 48
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ebc84d0ef0e08d10800000000000000
+      internalID: 2125946405868063712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_21
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 39
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1590e08bf3232dd80800000000000000
+      internalID: -8227458320000218799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_22
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 39
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d00699e70cebce0800000000000000
+      internalID: -1387459985211912947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_23
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 39
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a883829be6b8390800000000000000
+      internalID: -7815030986848564658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_24
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 38
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa87dfc13ef452e0800000000000000
+      internalID: -2137804433200280839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_25
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 6
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e1fd74d310841b90800000000000000
+      internalID: -7272046675638750752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetWar2_26
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 804a73595fbd463f0800000000000000
+      internalID: -908359377005075448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tilesetWar2_0: 2748248645060468950
+      tilesetWar2_1: -3535856788359681180
+      tilesetWar2_10: -2795973054022926480
+      tilesetWar2_11: 5752940120339713353
+      tilesetWar2_12: 8042675651309191376
+      tilesetWar2_13: 4699292858345361984
+      tilesetWar2_14: 788107695890545181
+      tilesetWar2_15: -3595314033693067507
+      tilesetWar2_16: -8098243852761468645
+      tilesetWar2_17: 7354120335359464664
+      tilesetWar2_18: 5937396466774197962
+      tilesetWar2_19: -5611668236015883426
+      tilesetWar2_2: 2403543904170965094
+      tilesetWar2_20: 2125946405868063712
+      tilesetWar2_21: -8227458320000218799
+      tilesetWar2_22: -1387459985211912947
+      tilesetWar2_23: -7815030986848564658
+      tilesetWar2_24: -2137804433200280839
+      tilesetWar2_25: -7272046675638750752
+      tilesetWar2_26: -908359377005075448
+      tilesetWar2_3: -5655642023719051508
+      tilesetWar2_4: 2782761166091390697
+      tilesetWar2_5: 6426001604328944161
+      tilesetWar2_6: -6792997855918169018
+      tilesetWar2_7: 4288425540541262076
+      tilesetWar2_8: -1162857541234224694
+      tilesetWar2_9: 7449811943136093946
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
