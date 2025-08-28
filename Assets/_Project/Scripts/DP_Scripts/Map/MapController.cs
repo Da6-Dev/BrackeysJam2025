@@ -7,6 +7,8 @@ using TMPro;
 // Implementamos interfaces para detectar cliques, arrastos e scroll do mouse na área do mapa.
 public class MapController : MonoBehaviour, IPointerClickHandler, IDragHandler, IScrollHandler
 {
+    public InvestmentUI investmentUI;
+
     [Header("Referências Essenciais")]
     [Tooltip("Referência ao script MapGenerator para obter dados do mapa.")]
     public MapGenerator mapGenerator;
@@ -235,6 +237,11 @@ public class MapController : MonoBehaviour, IPointerClickHandler, IDragHandler, 
         {
             // Se clicou na água.
             countryInfoText.text = "Oceano";
+        }
+
+        if (investmentUI != null && countryIndex != -1 && countryIndex < mapGenerator.WorldData.Count)
+        {
+            investmentUI.SetSelectedCountry(mapGenerator.WorldData[countryIndex]);
         }
     }
 
