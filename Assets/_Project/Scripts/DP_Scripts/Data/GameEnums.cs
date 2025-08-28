@@ -14,9 +14,20 @@ public enum GovernmentType
 }
 
 /// <summary>
+/// Define o estado geral da economia mundial em um determinado semestre.
+/// </summary>
+public enum WorldEconomicState
+{
+    Boom,           // Crescimento forte para todos
+    Growth,         // Crescimento moderado (normal)
+    Stagnation,     // Economia parada, leve tendência negativa
+    Recession       // Crise global, forte tendência negativa
+}
+
+/// <summary>
 /// Defines the different economic sectors a company can belong to.
 /// </summary>
-public enum Sector 
+public enum Sector
 {
     // Technology & Science
     SoftwareAndServices,
@@ -39,7 +50,7 @@ public enum Sector
     Retail,
     LogisticsAndTransport,
     RealEstate,
-    
+
     // Governmental
     Military
 }

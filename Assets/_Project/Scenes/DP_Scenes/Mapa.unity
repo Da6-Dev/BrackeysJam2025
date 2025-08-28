@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 909512413}
   - component: {fileID: 909512412}
   - component: {fileID: 909512414}
+  - component: {fileID: 909512415}
   m_Layer: 0
   m_Name: WorldGenerator
   m_TagString: Untagged
@@ -453,6 +454,7 @@ MonoBehaviour:
       multiplier: 1.42382
     - sector: 14
       multiplier: 1.3023655
+    economicStability: 0
     taxRate: 0.45483834
     infrastructureLevel: 0.3928902
     primaryNaturalResource: 3
@@ -462,6 +464,9 @@ MonoBehaviour:
     currentPolicy: 4
     countryID: 0
     economicBlocName: 
+    internationalReputation: 0
+    developmentLevel: 0
+    internalEventsRisk: 0
     mapColor: {r: 0.14085248, g: 0.8338885, b: 0.9327348, a: 1}
     capitalPosition: {x: 0, y: 0}
   - countryName: Principality of Tylea
@@ -498,6 +503,7 @@ MonoBehaviour:
       multiplier: 1.2350775
     - sector: 14
       multiplier: 1.4326998
+    economicStability: 0
     taxRate: 0.23281264
     infrastructureLevel: 0.39811963
     primaryNaturalResource: 2
@@ -507,6 +513,9 @@ MonoBehaviour:
     currentPolicy: 4
     countryID: 1
     economicBlocName: Meridian Alliance
+    internationalReputation: 0
+    developmentLevel: 0
+    internalEventsRisk: 0
     mapColor: {r: 0.26755518, g: 0.94553185, b: 0.6258184, a: 1}
     capitalPosition: {x: 0, y: 0}
   - countryName: Directive of Wycea
@@ -543,6 +552,7 @@ MonoBehaviour:
       multiplier: 0.77321404
     - sector: 14
       multiplier: 0.74000883
+    economicStability: 0
     taxRate: 0.5579546
     infrastructureLevel: 0.51705205
     primaryNaturalResource: 1
@@ -552,6 +562,9 @@ MonoBehaviour:
     currentPolicy: 4
     countryID: 2
     economicBlocName: Northern Trade Union
+    internationalReputation: 0
+    developmentLevel: 0
+    internalEventsRisk: 0
     mapColor: {r: 0.93092746, g: 0.16490015, b: 0.6936059, a: 1}
     capitalPosition: {x: 0, y: 0}
   - countryName: Union of Fenia
@@ -588,6 +601,7 @@ MonoBehaviour:
       multiplier: 0.8193296
     - sector: 14
       multiplier: 0.9863858
+    economicStability: 0
     taxRate: 0.30930543
     infrastructureLevel: 0.312033
     primaryNaturalResource: 5
@@ -597,6 +611,9 @@ MonoBehaviour:
     currentPolicy: 3
     countryID: 3
     economicBlocName: Northern Trade Union
+    internationalReputation: 0
+    developmentLevel: 0
+    internalEventsRisk: 0
     mapColor: {r: 0.59373385, g: 0.13625051, b: 0.86419845, a: 1}
     capitalPosition: {x: 0, y: 0}
   - countryName: Directive of Pendoros
@@ -633,6 +650,7 @@ MonoBehaviour:
       multiplier: 0.8300734
     - sector: 14
       multiplier: 1.1791949
+    economicStability: 0
     taxRate: 0.57259256
     infrastructureLevel: 0.6589586
     primaryNaturalResource: 2
@@ -642,6 +660,9 @@ MonoBehaviour:
     currentPolicy: 0
     countryID: 4
     economicBlocName: Northern Trade Union
+    internationalReputation: 0
+    developmentLevel: 0
+    internalEventsRisk: 0
     mapColor: {r: 0.81920093, g: 0.76872516, b: 0.21326666, a: 1}
     capitalPosition: {x: 0, y: 0}
   testCountry:
@@ -649,6 +670,7 @@ MonoBehaviour:
     governmentType: 0
     politicalStability: 0
     sectorAffinities: []
+    economicStability: 0
     taxRate: 0
     infrastructureLevel: 0
     primaryNaturalResource: 0
@@ -658,6 +680,9 @@ MonoBehaviour:
     currentPolicy: 0
     countryID: 0
     economicBlocName: 
+    internationalReputation: 0
+    developmentLevel: 0
+    internalEventsRisk: 0
     mapColor: {r: 0, g: 0, b: 0, a: 0}
     capitalPosition: {x: 0, y: 0}
 --- !u!114 &909512414
@@ -674,6 +699,155 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   worldGenerator: {fileID: 909512413}
   mapGenerator: {fileID: 909512412}
+  worldUpdater: {fileID: 909512415}
+--- !u!114 &909512415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909512409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43cb49ab9f4b1d4591f726217db01c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &933199795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 933199796}
+  - component: {fileID: 933199798}
+  - component: {fileID: 933199797}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &933199796
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933199795}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1628585034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &933199797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933199795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Advance Semester
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 18
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 15
+  m_fontSizeMax: 18
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &933199798
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933199795}
+  m_CullTransparentMesh: 1
 --- !u!1 &974146395
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,12 +1065,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 18
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 15
+  m_fontSizeMax: 18
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1219,6 +1393,139 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1628585033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628585034}
+  - component: {fileID: 1628585037}
+  - component: {fileID: 1628585036}
+  - component: {fileID: 1628585035}
+  m_Layer: 5
+  m_Name: AdvanceSemester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1628585034
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628585033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 933199796}
+  m_Father: {fileID: 1970055689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 115, y: -184}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1628585035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1628585036}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 909512414}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AdvanceSemester
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1628585036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1628585037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628585033}
+  m_CullTransparentMesh: 1
 --- !u!1 &1970055688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1560,7 @@ RectTransform:
   - {fileID: 1981332490}
   - {fileID: 1556698976}
   - {fileID: 974146396}
+  - {fileID: 1628585034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1412,6 +1720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def60879bee386549a585ece449090ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  investmentUI: {fileID: 0}
   mapGenerator: {fileID: 909512412}
   mapDisplayImage: {fileID: 1625654328}
   mapContainer: {fileID: 1981332489}
