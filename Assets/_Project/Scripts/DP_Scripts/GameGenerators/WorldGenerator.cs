@@ -63,6 +63,7 @@ public class WorldGenerator : MonoBehaviour
         Debug.Log($"World generated with {world.Count} nations, using Seed: {worldSeed}");
     }
 
+    // EM WorldGenerator.cs
     private Country GenerateCountry(float hue)
     {
         Country newCountry = new Country();
@@ -71,19 +72,40 @@ public class WorldGenerator : MonoBehaviour
         newCountry.countryName = GenerateCountryName(newCountry.governmentType);
         newCountry.politicalStability = UnityEngine.Random.Range(0.2f, 0.9f);
 
-        const float minBlueHue = 0.55f;
-        const float maxBlueHue = 0.75f;
-
-        if (hue >= minBlueHue && hue <= maxBlueHue)
-        {
-            hue = (hue + 0.3f) % 1.0f;
-        }
-
+        // ... (código da cor do mapa)
         newCountry.mapColor = Color.HSVToRGB(hue, UnityEngine.Random.Range(0.75f, 0.95f), UnityEngine.Random.Range(0.85f, 1.0f));
 
         GenerateEconomicAttributes(newCountry);
         GenerateSocialAttributes(newCountry);
         newCountry.sectorAffinities = GenerateSectorAffinities(newCountry.governmentType, newCountry.primaryNaturalResource);
+
+        // --- INICIALIZAÇÃO DOS NOVOS ATRIBUTOS --- // <-- NOVO
+
+        // Estabilidade Econômica inicial é aleatória.
+        newCountry.economicStability = UnityEngine.Random.Range(0.4f, 0.9f);
+
+        // Nível de Desenvolvimento é calculado a partir da infraestrutura e educação iniciais.
+        newCountry.developmentLevel = (newCountry.infrastructureLevel + newCountry.educationLevel) / 2.0f;
+
+        // Risco de Eventos Internos é o inverso da estabilidade e moral.
+        float invertedStability = 1.0f - newCountry.politicalStability;
+        float invertedMorale = 1.0f - newCountry.populationMorale;
+        newCountry.internalEventsRisk = (invertedStability + invertedMorale) / 2.0f;
+
+        // Reputação Internacional inicial é baseada no tipo de governo e estabilidade.
+        // (A reputação final baseada em aliados será calculada em GenerateGeopolitics).
+        float reputationFromGov = 1.0f;
+        if (newCountry.governmentType == GovernmentType.MilitaryDictatorship || newCountry.governmentType == GovernmentType.Autocracy)
+        {
+            reputationFromGov = 0.6f;
+        }
+        newCountry.internationalReputation = (newCountry.politicalStability * reputationFromGov);
+
+        // Inicializa o crescimento previsto dos setores com um valor pequeno e aleatório.
+        foreach (var affinity in newCountry.sectorAffinities)
+        {
+            newCountry.predictedSectorGrowth[affinity.sector] = UnityEngine.Random.Range(-0.02f, 0.05f); // de -2% a +5%
+        }
 
         return newCountry;
     }
@@ -198,68 +220,82 @@ public class WorldGenerator : MonoBehaviour
         country.primaryNaturalResource = (NaturalResource)resourceValues.GetValue(UnityEngine.Random.Range(0, resourceValues.Length));
     }
 
+    // EM WorldGenerator.cs
     private List<SectorAffinity> GenerateSectorAffinities(GovernmentType govType, NaturalResource resource)
     {
         List<SectorAffinity> affinities = new List<SectorAffinity>();
 
-        foreach (Sector sector in Enum.GetValues(typeof(Sector)))
+        // 1. Pega todos os setores possíveis e os embaralha
+        List<Sector> allSectors = ((Sector[])Enum.GetValues(typeof(Sector))).ToList();
+        for (int i = 0; i < allSectors.Count - 1; i++)
+        {
+            int j = UnityEngine.Random.Range(i, allSectors.Count);
+            Sector temp = allSectors[i];
+            allSectors[i] = allSectors[j];
+            allSectors[j] = temp;
+        }
+
+        // 2. Define quantos setores este país terá afinidade (ex: entre 6 e 12)
+        int numberOfAffinities = UnityEngine.Random.Range(4, 7);
+        List<Sector> countrySectors = allSectors.GetRange(0, numberOfAffinities);
+
+        // 3. Adiciona afinidades apenas para os setores selecionados
+        foreach (Sector sector in countrySectors)
         {
             affinities.Add(new SectorAffinity
             {
                 sector = sector,
-                multiplier = UnityEngine.Random.Range(0.7f, 1.5f)
+                multiplier = UnityEngine.Random.Range(0.8f, 1.6f) // Multiplicador base
             });
         }
 
-        // Give an extra bonus to a random sector
-        int randomIndex = UnityEngine.Random.Range(0, affinities.Count);
-        SectorAffinity bonusAffinity = affinities[randomIndex];
-        bonusAffinity.multiplier *= 1.5f;
-        affinities[randomIndex] = bonusAffinity;
-
-        // --- Coherence Bonuses ---
-        // Bonus by government type
+        // --- Bônus de Coerência (Lógica adaptada) ---
+        // Garante que setores importantes para o país existam e dá um bônus a eles.
         if (govType == GovernmentType.MilitaryDictatorship)
         {
-            AdjustAffinity(ref affinities, Sector.Military, 0.5f);
+            AdjustOrAddAffinity(ref affinities, Sector.Military, 0.5f);
         }
         if (govType == GovernmentType.Technocracy)
         {
-            AdjustAffinity(ref affinities, Sector.SoftwareAndServices, 0.4f);
-            AdjustAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.4f);
-            AdjustAffinity(ref affinities, Sector.Biotechnology, 0.3f);
+            AdjustOrAddAffinity(ref affinities, Sector.SoftwareAndServices, 0.4f);
+            AdjustOrAddAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.4f);
         }
-
-        // Bonus by natural resource
         if (resource == NaturalResource.Oil || resource == NaturalResource.NaturalGas)
         {
-            AdjustAffinity(ref affinities, Sector.FossilFuels, 0.6f);
+            AdjustOrAddAffinity(ref affinities, Sector.FossilFuels, 0.6f);
         }
         if (resource == NaturalResource.FertileLand)
         {
-            AdjustAffinity(ref affinities, Sector.Agriculture, 0.5f);
+            AdjustOrAddAffinity(ref affinities, Sector.Agriculture, 0.5f);
         }
         if (resource == NaturalResource.RareEarthMetals)
         {
-            AdjustAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.5f);
+            AdjustOrAddAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.5f);
         }
 
         return affinities;
     }
 
-    private void AdjustAffinity(ref List<SectorAffinity> affinities, Sector sector, float bonus)
+    // ATENÇÃO: Adicione esta nova função helper DENTRO da classe WorldGenerator.cs
+    // Ela substitui a antiga 'AdjustAffinity' para poder ADICIONAR um setor caso ele não exista.
+    private void AdjustOrAddAffinity(ref List<SectorAffinity> affinities, Sector sector, float bonus)
     {
         int index = affinities.FindIndex(a => a.sector == sector);
         if (index != -1)
         {
-            // 1. LER: Pega uma cópia da struct.
+            // Se o setor já existe, apenas adiciona o bônus
             SectorAffinity affinity = affinities[index];
-
-            // 2. MODIFICAR: Altera a propriedade na cópia local.
             affinity.multiplier += bonus;
-
-            // 3. ESCREVER: Coloca a cópia modificada de volta na lista.
             affinities[index] = affinity;
+        }
+        else
+        {
+            // Se o setor não foi sorteado, adiciona ele com um multiplicador base + bônus
+            affinities.Add(new SectorAffinity
+            {
+                sector = sector,
+                multiplier = 1.0f + bonus
+            });
         }
     }
 
@@ -346,6 +382,47 @@ public class WorldGenerator : MonoBehaviour
         }
         Debug.Log("\n--- END OF REPORT ---");
     }
+    
+    [ContextMenu("Print Predicted Growth Rates to Console")]
+private void PrintPredictedGrowthRates()
+{
+    if (world == null || world.Count == 0)
+    {
+        Debug.LogWarning("Mundo não foi gerado ainda! Use 'Generate New World' primeiro.");
+        return;
+    }
+
+    Debug.Log("--- PREVISÃO DE CRESCIMENTO DE SETORES (POR SEMESTRE) ---");
+
+    foreach (Country country in world)
+    {
+        // Imprime o nome do país para organizar a lista
+        Debug.Log($"\n--- Crescimento para: {country.countryName} (Estabilidade Econômica: {country.economicStability:P1}) ---");
+
+        if (country.predictedSectorGrowth == null || country.predictedSectorGrowth.Count == 0)
+        {
+            Debug.Log("   -> Nenhum dado de crescimento encontrado para este país.");
+            continue;
+        }
+
+        // Percorre o dicionário e imprime cada setor e seu crescimento previsto
+        foreach (var growthData in country.predictedSectorGrowth)
+        {
+            Sector sector = growthData.Key;
+            float growthValue = growthData.Value;
+
+            // Formata o valor para porcentagem (ex: 0.05 -> "+5.00%")
+            string growthString = $"{growthValue:P2}"; 
+            if(growthValue > 0)
+            {
+                growthString = "+" + growthString;
+            }
+
+            Debug.Log($"   -> Setor: {sector}, Crescimento Previsto: {growthString}");
+        }
+    }
+    Debug.Log("\n--- FIM DO RELATÓRIO DE CRESCIMENTO ---");
+}
 
     #endregion
 }
