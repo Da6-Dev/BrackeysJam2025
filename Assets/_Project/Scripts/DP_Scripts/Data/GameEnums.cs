@@ -10,13 +10,16 @@ public enum GovernmentType
     Technocracy,
     Monarchy,
     ParliamentaryRepublic,
-    MilitaryDictatorship
+    MilitaryDictatorship,
+    Theocracy,
+    Communism,
+    Federation 
 }
 
 /// <summary>
 /// Defines the different economic sectors a company can belong to.
 /// </summary>
-public enum Sector 
+public enum Sector
 {
     // Technology & Science
     SoftwareAndServices,
@@ -39,7 +42,9 @@ public enum Sector
     Retail,
     LogisticsAndTransport,
     RealEstate,
-    
+    TourismAndHospitality,
+    MediaAndEntertainment,
+
     // Governmental
     Military
 }
@@ -54,7 +59,11 @@ public enum NaturalResource
     Gold,
     RareEarthMetals,
     NaturalGas,
-    FertileLand
+    FertileLand,
+    Coal,
+    Uranium,
+    Timber,
+    FreshWater  
 }
 
 /// <summary>
@@ -81,4 +90,46 @@ public enum DiplomaticStatus
     Tense,
     Rival,
     War
+}
+
+/// <summary>
+/// Define os tipos de eventos que podem ocorrer no mundo.
+/// </summary>
+public enum EventType
+{
+    EconomicBoom,
+    EconomicRecession,
+    NaturalDisaster,
+    ScientificBreakthrough,
+    PoliticalScandal,
+    DiplomaticIncident,
+    ResourceDiscovery
+}
+
+/// <summary>
+/// Define tipos específicos de infraestrutura que um país pode construir.
+/// </summary>
+public enum InfrastructureType
+{
+    PowerPlant,
+    University,
+    Hospital,
+    Seaport,
+    Airport,
+    MilitaryBase,
+    ResearchLab
+}
+
+/// <summary>
+/// Define as ações diplomáticas que um país pode realizar.
+/// </summary>
+public enum DiplomaticActionType
+{
+    FormAlliance,
+    SignTradePact,
+    ImposeSanctions,
+    SendAid,
+    CondemnAction,
+    OfferMediation,
+    RequestMilitaryAccess
 }

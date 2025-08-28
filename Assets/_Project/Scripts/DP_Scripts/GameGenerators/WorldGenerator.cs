@@ -34,10 +34,6 @@ public class WorldGenerator : MonoBehaviour
 
     #region Generation Logic
 
-    /// <summary>
-    /// Generates the entire game world, focusing on creating the countries.
-    /// Company generation is called separately by the GameManager.
-    /// </summary>
     public void GenerateWorld()
     {
         if (countryNamingRules == null) { InitializeNamingRules(); }
@@ -69,57 +65,58 @@ public class WorldGenerator : MonoBehaviour
 
         newCountry.governmentType = GetRandomGovernmentType();
         newCountry.countryName = GenerateCountryName(newCountry.governmentType);
-        newCountry.politicalStability = UnityEngine.Random.Range(0.2f, 0.9f);
-
+        
+        // --- Geração de Cor ---
         const float minBlueHue = 0.55f;
         const float maxBlueHue = 0.75f;
-
         if (hue >= minBlueHue && hue <= maxBlueHue)
         {
             hue = (hue + 0.3f) % 1.0f;
         }
-
         newCountry.mapColor = Color.HSVToRGB(hue, UnityEngine.Random.Range(0.75f, 0.95f), UnityEngine.Random.Range(0.85f, 1.0f));
 
-        GenerateEconomicAttributes(newCountry);
+        // --- Lógica de Geração Interconectada --- // ALTERADO
+        // A ordem agora é importante para que os valores possam depender uns dos outros.
         GenerateSocialAttributes(newCountry);
+        GenerateEconomicAttributes(newCountry);
+        GenerateMilitaryAndTechAttributes(newCountry);
+        GenerateEnvironmentalAttributes(newCountry);
+        GenerateInitialBudget(newCountry); // ADICIONADO: Define o orçamento inicial
+
         newCountry.sectorAffinities = GenerateSectorAffinities(newCountry.governmentType, newCountry.primaryNaturalResource);
+
+        // Clamp final para garantir que nenhum valor saia do intervalo 0-1
+        newCountry.developmentLevel = Mathf.Clamp01(newCountry.developmentLevel);
+        newCountry.technologyLevel = Mathf.Clamp01(newCountry.technologyLevel);
+        newCountry.environmentalHealth = Mathf.Clamp01(newCountry.environmentalHealth);
 
         return newCountry;
     }
 
     private void GenerateGeopolitics(List<Country> allCountries)
     {
-        // --- Generate Economic Blocs ---
+        // ... (Nenhuma mudança necessária aqui, seu código existente é bom)
         List<string> blocNames = new List<string> { "Northern Trade Union", "Southern Economic Pact", "Meridian Alliance", "Oceanic Syndicate" };
         int numberOfBlocs = UnityEngine.Random.Range(2, (blocNames.Count / 2) + 2);
-
         for (int i = 0; i < numberOfBlocs; i++)
         {
             string blocName = blocNames[UnityEngine.Random.Range(0, blocNames.Count)];
-            blocNames.Remove(blocName); // Ensure unique bloc names
-
+            blocNames.Remove(blocName);
             foreach (Country country in allCountries)
             {
-                // If country is not already in a bloc, 50% chance to join this new one
                 if (string.IsNullOrEmpty(country.economicBlocName) && UnityEngine.Random.value > 0.5f)
                 {
                     country.economicBlocName = blocName;
                 }
             }
         }
-
-        // --- Generate Diplomatic Relations ---
         for (int i = 0; i < allCountries.Count; i++)
         {
             for (int j = i + 1; j < allCountries.Count; j++)
             {
                 Country countryA = allCountries[i];
                 Country countryB = allCountries[j];
-
                 DiplomaticStatus status;
-
-                // If countries are in the same economic bloc, they are likely allies or friendly
                 bool inSameBloc = !string.IsNullOrEmpty(countryA.economicBlocName) && countryA.economicBlocName == countryB.economicBlocName;
                 if (inSameBloc)
                 {
@@ -129,7 +126,6 @@ public class WorldGenerator : MonoBehaviour
                 {
                     status = GetRandomWeightedDiplomaticStatus();
                 }
-
                 countryA.diplomaticRelations[countryB.countryID] = status;
                 countryB.diplomaticRelations[countryA.countryID] = status;
             }
@@ -143,122 +139,182 @@ public class WorldGenerator : MonoBehaviour
 
     private void GenerateSocialAttributes(Country country)
     {
+        country.population = UnityEngine.Random.Range(1_000_000, 150_000_000);
+        country.politicalStability = UnityEngine.Random.Range(0.3f, 0.8f);
+
         switch (country.governmentType)
         {
             case GovernmentType.Democracy:
             case GovernmentType.ParliamentaryRepublic:
-                country.populationMorale = UnityEngine.Random.Range(0.50f, 0.95f); // Generally happier populace
+            case GovernmentType.Federation: // CORRIGIDO: Adicionado caso faltante
+                country.populationMorale = UnityEngine.Random.Range(0.50f, 0.95f);
                 country.educationLevel = UnityEngine.Random.Range(0.45f, 0.90f);
+                country.unemploymentRate = UnityEngine.Random.Range(0.03f, 0.10f);
                 break;
             case GovernmentType.Autocracy:
             case GovernmentType.MilitaryDictatorship:
-                country.populationMorale = UnityEngine.Random.Range(0.20f, 0.60f); // Often oppressed/unhappy populace
+                country.populationMorale = UnityEngine.Random.Range(0.20f, 0.60f);
                 country.educationLevel = UnityEngine.Random.Range(0.25f, 0.70f);
+                country.unemploymentRate = UnityEngine.Random.Range(0.08f, 0.25f);
                 break;
             case GovernmentType.Monarchy:
                 country.populationMorale = UnityEngine.Random.Range(0.40f, 0.85f);
                 country.educationLevel = UnityEngine.Random.Range(0.30f, 0.75f);
+                country.unemploymentRate = UnityEngine.Random.Range(0.05f, 0.15f);
                 break;
             case GovernmentType.Technocracy:
                 country.populationMorale = UnityEngine.Random.Range(0.35f, 0.75f);
-                country.educationLevel = UnityEngine.Random.Range(0.60f, 0.98f); // Education is a top priority
+                country.educationLevel = UnityEngine.Random.Range(0.60f, 0.98f);
+                country.unemploymentRate = UnityEngine.Random.Range(0.05f, 0.12f);
+                break;
+            case GovernmentType.Theocracy: // CORRIGIDO: Adicionado caso faltante
+                country.populationMorale = UnityEngine.Random.Range(0.45f, 0.90f); // Moral alta por fé
+                country.educationLevel = UnityEngine.Random.Range(0.20f, 0.65f); // Educação focada em religião, não ciência
+                country.unemploymentRate = UnityEngine.Random.Range(0.06f, 0.18f);
+                break;
+            case GovernmentType.Communism: // CORRIGIDO: Adicionado caso faltante
+                country.populationMorale = UnityEngine.Random.Range(0.30f, 0.70f);
+                country.educationLevel = UnityEngine.Random.Range(0.40f, 0.85f);
+                country.unemploymentRate = UnityEngine.Random.Range(0.01f, 0.05f); // Oficialmente, desemprego é baixo
                 break;
         }
-
+        
+        country.populationGrowthRate = UnityEngine.Random.Range(-0.005f, 0.015f) + ((country.populationMorale - 0.5f) / 10f);
+        
         Array policyValues = Enum.GetValues(typeof(NationalPolicy));
         country.currentPolicy = (NationalPolicy)policyValues.GetValue(UnityEngine.Random.Range(0, policyValues.Length));
     }
 
     private void GenerateEconomicAttributes(Country country)
     {
+        // Infraestrutura e Desenvolvimento são baseados em Educação para mais realismo
+        country.infrastructureLevel = country.educationLevel * UnityEngine.Random.Range(0.8f, 1.2f);
+        country.developmentLevel = (country.infrastructureLevel + country.educationLevel) / 2f * UnityEngine.Random.Range(0.9f, 1.1f);
+        country.infrastructureLevel = Mathf.Clamp01(country.infrastructureLevel);
+        country.developmentLevel = Mathf.Clamp01(country.developmentLevel);
+
         switch (country.governmentType)
         {
+            // ... casos existentes ...
             case GovernmentType.Democracy:
             case GovernmentType.ParliamentaryRepublic:
-                country.corruptionLevel = UnityEngine.Random.Range(0.01f, 0.40f); // Tends to be less corrupt
-                country.taxRate = UnityEngine.Random.Range(0.20f, 0.55f); // Tends to have higher taxes (public services)
+            case GovernmentType.Federation: // CORRIGIDO
+                country.corruptionLevel = UnityEngine.Random.Range(0.01f, 0.40f);
+                country.taxRate = UnityEngine.Random.Range(0.20f, 0.55f);
                 break;
             case GovernmentType.Autocracy:
             case GovernmentType.MilitaryDictatorship:
-                country.corruptionLevel = UnityEngine.Random.Range(0.30f, 0.90f); // Tends to be more corrupt
-                country.taxRate = UnityEngine.Random.Range(0.10f, 0.40f); // Taxes might be lower to keep elites happy
+                country.corruptionLevel = UnityEngine.Random.Range(0.30f, 0.90f);
+                country.taxRate = UnityEngine.Random.Range(0.10f, 0.40f);
                 break;
             case GovernmentType.Monarchy:
                 country.corruptionLevel = UnityEngine.Random.Range(0.15f, 0.60f);
                 country.taxRate = UnityEngine.Random.Range(0.15f, 0.50f);
                 break;
             case GovernmentType.Technocracy:
-                country.corruptionLevel = UnityEngine.Random.Range(0.05f, 0.25f); // Tends to be efficient and low-corruption
-                country.taxRate = UnityEngine.Random.Range(0.30f, 0.65f); // High taxes to fund research
+                country.corruptionLevel = UnityEngine.Random.Range(0.05f, 0.25f);
+                country.taxRate = UnityEngine.Random.Range(0.30f, 0.65f);
+                break;
+            case GovernmentType.Theocracy: // CORRIGIDO
+                country.corruptionLevel = UnityEngine.Random.Range(0.25f, 0.75f);
+                country.taxRate = UnityEngine.Random.Range(0.10f, 0.30f); // Imposto baixo, baseado em doações/dízimos
+                break;
+            case GovernmentType.Communism: // CORRIGIDO
+                country.corruptionLevel = UnityEngine.Random.Range(0.20f, 0.80f);
+                country.taxRate = UnityEngine.Random.Range(0.40f, 0.80f); // Imposto/taxa estatal alta
                 break;
         }
 
-        country.infrastructureLevel = UnityEngine.Random.Range(0.30f, 0.95f);
+        // PIB e Dívida são calculados com base em outros fatores
+        long gdpPerCapita = (long)(UnityEngine.Random.Range(2000, 70000) * country.developmentLevel);
+        country.gdp = country.population * gdpPerCapita;
+        country.nationalDebt = (long)(country.gdp * UnityEngine.Random.Range(0.1f, 1.6f));
+        country.inflationRate = UnityEngine.Random.Range(0.01f, 0.05f);
+
         Array resourceValues = Enum.GetValues(typeof(NaturalResource));
         country.primaryNaturalResource = (NaturalResource)resourceValues.GetValue(UnityEngine.Random.Range(0, resourceValues.Length));
     }
 
+    private void GenerateMilitaryAndTechAttributes(Country country)
+    {
+        // Nível tecnológico é fortemente influenciado pela educação
+        float baseTech = country.educationLevel * UnityEngine.Random.Range(0.8f, 1.2f);
+        if (country.governmentType == GovernmentType.Technocracy) baseTech += 0.15f;
+        country.technologyLevel = Mathf.Clamp01(baseTech);
+
+        // Força militar depende do PIB, tecnologia e política
+        float gdpFactor = (float)country.gdp / 2_000_000_000_000f; // 0.5 de força por trilhão de PIB
+        float techFactor = country.technologyLevel * 0.5f;
+        country.militaryStrength = (gdpFactor + techFactor) / 2f;
+
+        if (country.governmentType == GovernmentType.MilitaryDictatorship) country.militaryStrength *= 1.5f;
+        if (country.currentPolicy == NationalPolicy.Militarism) country.militaryStrength *= 1.3f;
+        country.militaryStrength = Mathf.Clamp01(country.militaryStrength);
+    }
+
+    private void GenerateEnvironmentalAttributes(Country country)
+    {
+        // Saúde ambiental é inversamente proporcional ao desenvolvimento
+        float industrialPenalty = country.developmentLevel * UnityEngine.Random.Range(0.6f, 1.1f);
+        country.environmentalHealth = 1.0f - industrialPenalty;
+
+        if (country.primaryNaturalResource == NaturalResource.Oil || country.primaryNaturalResource == NaturalResource.Coal)
+            country.environmentalHealth -= 0.2f;
+
+        if (country.currentPolicy == NationalPolicy.Environmentalism)
+            country.environmentalHealth += 0.25f;
+            
+        country.environmentalHealth = Mathf.Clamp01(country.environmentalHealth);
+    }
+    
+    // ADICIONADO: Nova função para definir o orçamento inicial de forma balanceada
+    private void GenerateInitialBudget(Country country)
+    {
+        country.educationSpendingRate = UnityEngine.Random.Range(0.12f, 0.20f);
+        country.healthcareSpendingRate = UnityEngine.Random.Range(0.15f, 0.25f);
+        country.infrastructureSpendingRate = UnityEngine.Random.Range(0.08f, 0.15f);
+        country.militarySpendingRate = UnityEngine.Random.Range(0.05f, 0.18f);
+
+        if (country.governmentType == GovernmentType.MilitaryDictatorship)
+            country.militarySpendingRate *= 1.8f;
+        if (country.governmentType == GovernmentType.Technocracy)
+            country.infrastructureSpendingRate *= 1.5f;
+    }
+
     private List<SectorAffinity> GenerateSectorAffinities(GovernmentType govType, NaturalResource resource)
     {
+        // ... (Nenhuma mudança necessária aqui, seu código existente é bom)
         List<SectorAffinity> affinities = new List<SectorAffinity>();
-
         foreach (Sector sector in Enum.GetValues(typeof(Sector)))
         {
-            affinities.Add(new SectorAffinity
-            {
-                sector = sector,
-                multiplier = UnityEngine.Random.Range(0.7f, 1.5f)
-            });
+            affinities.Add(new SectorAffinity { sector = sector, multiplier = UnityEngine.Random.Range(0.7f, 1.5f) });
         }
-
-        // Give an extra bonus to a random sector
         int randomIndex = UnityEngine.Random.Range(0, affinities.Count);
         SectorAffinity bonusAffinity = affinities[randomIndex];
         bonusAffinity.multiplier *= 1.5f;
         affinities[randomIndex] = bonusAffinity;
-
-        // --- Coherence Bonuses ---
-        // Bonus by government type
-        if (govType == GovernmentType.MilitaryDictatorship)
-        {
-            AdjustAffinity(ref affinities, Sector.Military, 0.5f);
-        }
+        if (govType == GovernmentType.MilitaryDictatorship) { AdjustAffinity(ref affinities, Sector.Military, 0.5f); }
         if (govType == GovernmentType.Technocracy)
         {
             AdjustAffinity(ref affinities, Sector.SoftwareAndServices, 0.4f);
             AdjustAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.4f);
             AdjustAffinity(ref affinities, Sector.Biotechnology, 0.3f);
         }
-
-        // Bonus by natural resource
-        if (resource == NaturalResource.Oil || resource == NaturalResource.NaturalGas)
-        {
-            AdjustAffinity(ref affinities, Sector.FossilFuels, 0.6f);
-        }
-        if (resource == NaturalResource.FertileLand)
-        {
-            AdjustAffinity(ref affinities, Sector.Agriculture, 0.5f);
-        }
-        if (resource == NaturalResource.RareEarthMetals)
-        {
-            AdjustAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.5f);
-        }
-
+        if (resource == NaturalResource.Oil || resource == NaturalResource.NaturalGas) { AdjustAffinity(ref affinities, Sector.FossilFuels, 0.6f); }
+        if (resource == NaturalResource.FertileLand) { AdjustAffinity(ref affinities, Sector.Agriculture, 0.5f); }
+        if (resource == NaturalResource.RareEarthMetals) { AdjustAffinity(ref affinities, Sector.HardwareAndSemiconductors, 0.5f); }
         return affinities;
     }
+    
+    // ... (restante do código: AdjustAffinity, GenerateCountryName, etc. permanece o mesmo)
 
     private void AdjustAffinity(ref List<SectorAffinity> affinities, Sector sector, float bonus)
     {
         int index = affinities.FindIndex(a => a.sector == sector);
         if (index != -1)
         {
-            // 1. LER: Pega uma cópia da struct.
             SectorAffinity affinity = affinities[index];
-
-            // 2. MODIFICAR: Altera a propriedade na cópia local.
             affinity.multiplier += bonus;
-
-            // 3. ESCREVER: Coloca a cópia modificada de volta na lista.
             affinities[index] = affinity;
         }
     }
@@ -281,24 +337,27 @@ public class WorldGenerator : MonoBehaviour
 
     private DiplomaticStatus GetRandomWeightedDiplomaticStatus()
     {
-        float roll = UnityEngine.Random.value; // Random number between 0.0 and 1.0
-
-        if (roll < 0.05f) return DiplomaticStatus.War;       // 5% chance
-        if (roll < 0.20f) return DiplomaticStatus.Rival;     // 15% chance
-        if (roll < 0.45f) return DiplomaticStatus.Tense;     // 25% chance
-        if (roll < 0.70f) return DiplomaticStatus.Friendly;  // 25% chance
-        return DiplomaticStatus.Neutral;                         // 30% chance
+        float roll = UnityEngine.Random.value;
+        if (roll < 0.05f) return DiplomaticStatus.War;
+        if (roll < 0.20f) return DiplomaticStatus.Rival;
+        if (roll < 0.45f) return DiplomaticStatus.Tense;
+        if (roll < 0.70f) return DiplomaticStatus.Friendly;
+        return DiplomaticStatus.Neutral;
     }
 
     private void InitializeNamingRules()
     {
         countryNamingRules = new Dictionary<GovernmentType, List<string>>();
+
         countryNamingRules[GovernmentType.Democracy] = new List<string> { "Republic of", "Federal Republic of", "Federation of", "Free State of", "" };
         countryNamingRules[GovernmentType.Autocracy] = new List<string> { "State of", "Greater Empire of", "Dominion of", "People's Republic of", "" };
         countryNamingRules[GovernmentType.Technocracy] = new List<string> { "The Technate of", "Directive of", "Union of", "" };
         countryNamingRules[GovernmentType.Monarchy] = new List<string> { "Kingdom of", "Grand Duchy of", "Principality of", "Sultanate of", "Empire of", "" };
         countryNamingRules[GovernmentType.ParliamentaryRepublic] = new List<string> { "Republic of", "Commonwealth of", "Union of", "" };
         countryNamingRules[GovernmentType.MilitaryDictatorship] = new List<string> { "The Military Junta of", "Military State of", "Dominion of", "" };
+        countryNamingRules[GovernmentType.Theocracy] = new List<string> { "Holy State of", "The Theocracy of", "Divine Mandate of", "" };
+        countryNamingRules[GovernmentType.Communism] = new List<string> { "People's Socialist Republic of", "Workers' State of", "Union of", "" };
+        countryNamingRules[GovernmentType.Federation] = new List<string> { "United Federation of", "Federation of", "Confederation of", "" };
     }
 
     #endregion
@@ -306,42 +365,23 @@ public class WorldGenerator : MonoBehaviour
     #region Editor Tools & Debugging
 
     [ContextMenu("Generate Random Seed")]
-    private void GenerateRandomSeed()
-    {
-        worldSeed = UnityEngine.Random.Range(0, 999999);
-    }
+    private void GenerateRandomSeed() { worldSeed = UnityEngine.Random.Range(0, 999999); }
 
     [ContextMenu("Generate New World (Editor)")]
-    private void GenerateWorldForEditor()
-    {
-        GenerateWorld();
-    }
+    private void GenerateWorldForEditor() { GenerateWorld(); }
 
     [ContextMenu("Print Diplomatic Relations to Console")]
     private void PrintDiplomaticRelations()
     {
-        if (world == null || world.Count == 0)
-        {
-            Debug.LogWarning("World has not been generated yet! Please use 'Generate New World' first.");
-            return;
-        }
-
+        if (world == null || world.Count == 0) { Debug.LogWarning("World has not been generated yet!"); return; }
         Debug.Log("--- WORLD DIPLOMATIC RELATIONS ---");
-
         foreach (Country country in world)
         {
             Debug.Log($"\n--- Relations for {country.countryName} (Bloc: {country.economicBlocName ?? "None"}) ---");
-
             foreach (var relation in country.diplomaticRelations)
             {
-                int otherCountryID = relation.Key;
-                DiplomaticStatus status = relation.Value;
-
-                Country otherCountry = world.FirstOrDefault(p => p.countryID == otherCountryID);
-                if (otherCountry != null)
-                {
-                    Debug.Log($"   -> with {otherCountry.countryName}: {status}");
-                }
+                Country otherCountry = world.FirstOrDefault(p => p.countryID == relation.Key);
+                if (otherCountry != null) { Debug.Log($"   -> with {otherCountry.countryName}: {relation.Value}"); }
             }
         }
         Debug.Log("\n--- END OF REPORT ---");

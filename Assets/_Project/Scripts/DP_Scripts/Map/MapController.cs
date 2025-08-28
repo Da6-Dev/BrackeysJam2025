@@ -221,13 +221,39 @@ public class MapController : MonoBehaviour, IPointerClickHandler, IDragHandler, 
         {
             Country clickedCountry = mapGenerator.WorldData[countryIndex];
 
-            // Usar StringBuilder é mais eficiente para montar strings.
+            // Usar StringBuilder é mais eficiente para montar strings complexas.
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"<b>{clickedCountry.countryName}</b>");
-            sb.AppendLine($"Governo: {clickedCountry.governmentType}");
-            sb.AppendLine($"Estabilidade: {clickedCountry.politicalStability:P0}");
-            sb.AppendLine($"Impostos: {clickedCountry.taxRate:P0}");
-            sb.AppendLine($"Corrupção: {clickedCountry.corruptionLevel:P0}");
+            
+            // --- Informações Gerais e Sociais ---
+            sb.AppendLine($"<b><size=120%>{clickedCountry.countryName}</size></b>");
+            sb.AppendLine($"<i>{clickedCountry.governmentType}</i>");
+            sb.AppendLine(); // Linha em branco para espaçamento
+            sb.AppendLine($"População: {clickedCountry.population:N0}"); // N0 formata números grandes (ex: 1.234.567)
+            sb.AppendLine($"Moral da População: {clickedCountry.populationMorale:P0}"); // P0 formata como porcentagem (ex: 75%)
+            sb.AppendLine($"Estabilidade Política: {clickedCountry.politicalStability:P0}");
+            sb.AppendLine($"Nível Educacional: {clickedCountry.educationLevel:P0}");
+
+            // --- Informações Econômicas ---
+            sb.AppendLine("\n<b>--- Economia ---</b>");
+            sb.AppendLine($"PIB: ${clickedCountry.gdp:N0}");
+            sb.AppendLine($"Dívida Nacional: ${clickedCountry.nationalDebt:N0}");
+            sb.AppendLine($"Nível de Desenvolvimento: {clickedCountry.developmentLevel:P0}");
+            sb.AppendLine($"Taxa de Desemprego: {clickedCountry.unemploymentRate:P0}");
+            sb.AppendLine($"Taxa de Impostos: {clickedCountry.taxRate:P0}");
+            sb.AppendLine($"Recurso Principal: {clickedCountry.primaryNaturalResource}");
+
+            // --- Estado e Militar ---
+            sb.AppendLine("\n<b>--- Estado ---</b>");
+            sb.AppendLine($"Força Militar: {clickedCountry.militaryStrength:F0}"); // F0 formata como número sem casas decimais
+            sb.AppendLine($"Nível Tecnológico: {clickedCountry.technologyLevel:P0}");
+            sb.AppendLine($"Nível de Corrupção: {clickedCountry.corruptionLevel:P0}");
+            sb.AppendLine($"Política Nacional: {clickedCountry.currentPolicy}");
+
+            // Exibe o bloco econômico apenas se o país pertencer a um
+            if (!string.IsNullOrEmpty(clickedCountry.economicBlocName))
+            {
+                sb.AppendLine($"Bloco Econômico: {clickedCountry.economicBlocName}");
+            }
 
             countryInfoText.text = sb.ToString();
         }

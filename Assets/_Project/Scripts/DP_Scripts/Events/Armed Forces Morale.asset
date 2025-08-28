@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8efcc1cb5b7c2645b38d43c225eda96, type: 3}
+  m_Name: Armed Forces Morale
+  m_EditorClassIdentifier: 
+  isInterCountryEvent: 0
+  Stat: 4
+  Threshold: 2
+  requiredRelation: 0
+  targetStat: 0
+  targetThreshold: 0
+  GenericEventName: Show of Force
+  CauseDescriptionFragment: A series of successful military exercises and a display
+    of new equipment have boosted national pride and morale...
+  ActorEffectModifiers: []
+  TargetEffectModifiers: []

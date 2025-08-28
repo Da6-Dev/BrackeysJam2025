@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8efcc1cb5b7c2645b38d43c225eda96, type: 3}
+  m_Name: Foreign Investment Boom
+  m_EditorClassIdentifier: 
+  Stat: 0
+  Threshold: 3
+  GenericEventName: Foreign Investment Boom
+  CauseDescriptionFragment: The nation's remarkable political stability has attracted
+    a surge of foreign investment, fueling economic expansion...
+  EffectModifier:
+    Id: stability_gdp_bonus
+    TargetStat: 0
+    Value: 0.015
+    SemestersRemaining: 10

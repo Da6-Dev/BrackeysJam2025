@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8efcc1cb5b7c2645b38d43c225eda96, type: 3}
+  m_Name: Humanitarian Aid Shipment
+  m_EditorClassIdentifier: 
+  isInterCountryEvent: 1
+  Stat: 0
+  Threshold: 3
+  requiredRelation: 1
+  targetStat: 1
+  targetThreshold: 0
+  GenericEventName: Humanitarian Aid Shipment
+  CauseDescriptionFragment: ' In response to a severe crisis in {TARGET}, the government
+    of {ACTOR} has sent a substantial humanitarian aid package, strengthening the
+    bonds of friendship.'
+  ActorEffectModifiers:
+  - Id: 
+    TargetStat: 2
+    Value: 0.01
+    SemestersRemaining: 4
+  TargetEffectModifiers:
+  - Id: 
+    TargetStat: 2
+    Value: 0.08
+    SemestersRemaining: 6
